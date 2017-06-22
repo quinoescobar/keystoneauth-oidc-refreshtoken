@@ -1,6 +1,7 @@
 
 # OpenID Connect Access Token Procurement Through Refresh Token for OpenStack client
 
+[![Build Status](https://travis-ci.org/quinoescobar/keystoneauth-oidc-refreshtoken.svg?branch=master)](https://travis-ci.org/quinoescobar/keystoneauth-oidc-refreshtoken)
 
 Description
 ===========
