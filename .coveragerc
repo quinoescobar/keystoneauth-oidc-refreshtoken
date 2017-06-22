@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = keystoneauth_oidc_refreshtoken
+omit = keystoneauth_oidc_refreshtoken/tests/*
+
+[report]
+ignore_errors = True
