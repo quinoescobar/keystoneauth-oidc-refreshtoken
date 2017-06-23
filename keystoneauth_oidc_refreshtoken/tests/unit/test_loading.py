@@ -26,7 +26,7 @@ from keystoneauth1.tests.unit import utils
 class OpenIDConnectRefreshToken(test_v3.OpenIDConnectBaseTests,
                                 utils.TestCase):
 
-    plugin_name = "V3OidcRefreshToken"
+    plugin_name = "v3oidcrefreshtoken"
 
     def setUp(self):
         super(OpenIDConnectRefreshToken, self).setUp()

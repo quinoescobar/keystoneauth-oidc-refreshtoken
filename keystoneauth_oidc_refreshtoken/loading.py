@@ -25,7 +25,7 @@ class OpenIDConnectRefreshToken(v3._OpenIDConnectBase):
 
     @property
     def plugin_class(self):
-        return plugin.V3OidcRefreshToken
+        return plugin.v3oidcrefreshtoken
 
     def get_options(self):
         options = super(OpenIDConnectRefreshToken, self).get_options()
