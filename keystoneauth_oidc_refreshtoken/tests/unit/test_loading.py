@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # Copyright 2017 JOSÉ JOAQUÍN ESCOBAR GÓMEZ
 # File: test_loading.py
 # Description:
@@ -22,7 +24,8 @@ from keystoneauth1.tests.unit.loading import test_v3
 from keystoneauth1.tests.unit import utils
 
 
-class OpenIDConnectRefreshToken(test_v3.OpenIDConnectBaseTests, utils.TestCase):
+class OpenIDConnectRefreshToken(test_v3.OpenIDConnectBaseTests,
+                                utils.TestCase):
 
     plugin_name = "V3OidcRefreshToken"
 
@@ -34,7 +37,6 @@ class OpenIDConnectRefreshToken(test_v3.OpenIDConnectBaseTests, utils.TestCase):
         kwargs.setdefault('auth_url', self.auth_url)
         loader = loading.get_plugin_loader(self.plugin_name)
         return loader.load_from_options(**kwargs)
-
 
     def test_options(self):
         options = loading.get_plugin_loader(self.plugin_name).get_options()
