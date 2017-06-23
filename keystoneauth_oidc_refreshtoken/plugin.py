@@ -14,12 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from keystoneauth1 import access
 from keystoneauth1 import _utils as utils
+from keystoneauth1 import access
 from keystoneauth1.identity.v3 import oidc
 from positional import positional
 
 from keystoneauth_oidc_refreshtoken import exceptions
+
+_logger = utils.get_logger(__name__)
 
 
 class OidcRefreshToken(oidc.oidc_OidcBase):
@@ -29,9 +31,9 @@ class OidcRefreshToken(oidc.oidc_OidcBase):
 
     @positional(4)
     def __init__(self, auth_url, identity_provider, protocol,
-                 client_id,client_secret,
+                 client_id, client_secret,
                  access_token_endpoint,
-                 refresh_token=None,**kwargs):
+                 refresh_token=None, **kwargs):
         """The OpenID Refresh Token plugin, It expects the following.
 
         :param auth_url: URL of the Identity Service
@@ -81,10 +83,8 @@ class OidcRefreshToken(oidc.oidc_OidcBase):
         :returns: A dictionary containing the payload to be exchanged
         :rtype: dict
         """
-        payload = {
-                   'refresh_token': self.refresh_token,
-                   'grant_type': self.grant_type
-                   }
+        payload = {'refresh_token': self.refresh_token,
+                   'grant_type': self.grant_type}
         return payload
 
     def get_unscoped_auth_ref(self, session):

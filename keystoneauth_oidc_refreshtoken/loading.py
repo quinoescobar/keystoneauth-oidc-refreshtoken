@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from keystoneauth1 import exceptions
 from keystoneauth1 import loading
 from keystoneauth1.loading._plugins.identity import v3
 from keystoneauth_oidc_refreshtoken import plugin
@@ -24,7 +23,7 @@ class OpenIDConnectRefreshToken(v3._OpenIDConnectBase):
 
     @property
     def plugin_class(self):
-        return identity.V3OidcRefreshToken
+        return plugin.V3OidcRefreshToken
 
     def get_options(self):
         options = super(OpenIDConnectRefreshToken, self).get_options()
