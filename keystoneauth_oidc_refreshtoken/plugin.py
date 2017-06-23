@@ -25,7 +25,7 @@ from positional import positional
 _logger = utils.get_logger(__name__)
 
 
-class OidcRefreshToken(oidc.oidc_OidcBase):
+class OidcRefreshToken(oidc._OidcBase):
     """Access Token Procurement Through Refresh Token Implementation."""
 
     grant_type = "refresh_token"

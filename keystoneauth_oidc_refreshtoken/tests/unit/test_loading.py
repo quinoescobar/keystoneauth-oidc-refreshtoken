@@ -18,7 +18,6 @@
 
 import uuid
 
-import keystoneauth1.exceptions.auth_plugins
 from keystoneauth1 import loading
 from keystoneauth1.tests.unit.loading import test_v3
 from keystoneauth1.tests.unit import utils
