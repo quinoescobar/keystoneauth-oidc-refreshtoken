@@ -40,7 +40,7 @@ class OpenIDConnectRefreshToken(test_v3.OpenIDConnectBaseTests,
     def test_options(self):
         options = loading.get_plugin_loader(self.plugin_name).get_options()
         self.assertTrue(
-            set(['refresh-token']).issubset(
+            set(['refresh_token']).issubset(
                 set([o.name for o in options]))
         )
 
