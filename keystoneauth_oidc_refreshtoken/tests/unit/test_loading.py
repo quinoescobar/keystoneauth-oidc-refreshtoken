@@ -22,7 +22,7 @@ from keystoneauth1.tests.unit.loading import test_v3
 from keystoneauth1.tests.unit import utils
 
 
-class OidcRefreshTokenTests(test_v3.OpenIDConnectBaseTests, utils.TestCase):
+class OpenIDConnectRefreshToken(test_v3.OpenIDConnectBaseTests, utils.TestCase):
 
     plugin_name = "V3OidcRefreshToken"
 
@@ -48,7 +48,7 @@ class OidcRefreshTokenTests(test_v3.OpenIDConnectBaseTests, utils.TestCase):
         protocol = uuid.uuid4().hex
         client_id = uuid.uuid4().hex
         client_secret = uuid.uuid4().hex
-        access_token_endpoint =  uuid.uuid4().hex
+        access_token_endpoint = uuid.uuid4().hex
         refresh_token = uuid.uuid4().hex
 
         oidc = self.create(identity_provider=identity_provider,
