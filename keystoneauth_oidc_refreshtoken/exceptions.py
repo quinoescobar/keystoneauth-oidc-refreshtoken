@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # Copyright 2017 JOSÉ JOAQUÍN ESCOBAR GÓMEZ
 # File: exceptions.py
 # Description:
