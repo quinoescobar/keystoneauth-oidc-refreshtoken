@@ -1,7 +1,7 @@
 # coding=utf-8
 
 # Copyright 2017 JOSÉ JOAQUÍN ESCOBAR GÓMEZ
-# File: test_loading.py
+# File: test_oidc.py
 # Description:
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,3 +17,28 @@
 # limitations under the License.
 
 import uuid
+from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
+from keystoneauth1.tests.unit import oidc_fixtures
+from keystoneauth1.tests.unit import utils
+
+from keystoneauth_oidc_refreshtoken import plugin as oidc
+
+
+class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
+                            utils.TestCase):
+    def setUp(self):
+        super(OIDCRefreshTokenTests, self).setUp()
+
+        self.GRANT_TYPE = 'refresh_token'
+
+        self.AUTHORIZATION_ENDPOINT = ''
+
+        self.plugin = oidc.OidcRefreshToken(
+            self.AUTH_URL,
+            self.IDENTITY_PROVIDER,
+            self.PROTOCOL,
+            client_id = self.CLIENT_ID,
+            client_secret = self.CLIENT_SECRET,
+            access_token_endpoint = self.ACCESS_TOKEN_ENDPOINT,
+            project_name = self.PROJECT_NAME,
+            refresh_token = self.REFRESH_TOKEN)
