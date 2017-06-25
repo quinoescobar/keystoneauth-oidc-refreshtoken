@@ -33,7 +33,7 @@ class OidcRefreshToken(oidc._OidcBase):
     @positional(4)
     def __init__(self, auth_url, identity_provider, protocol,
                  client_id, client_secret,
-                 access_token_endpoint,
+                 access_token_endpoint=None,
                  discovery_endpoint=None,
                  access_token_type='access_token',
                  refresh_token=None,
