@@ -71,7 +71,6 @@ class OidcRefreshToken(oidc._OidcBase):
             client_id=client_id,
             client_secret=client_secret,
             access_token_endpoint=access_token_endpoint,
-            access_token_type='access_token',
             **kwargs)
         self.refresh_token = refresh_token
 

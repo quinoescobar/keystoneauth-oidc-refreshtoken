@@ -40,5 +40,4 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             client_id = self.CLIENT_ID,
             client_secret = self.CLIENT_SECRET,
             access_token_endpoint = self.ACCESS_TOKEN_ENDPOINT,
-            refresh_token = self.REFRESH_TOKEN,
             project_name = self.PROJECT_NAME)
