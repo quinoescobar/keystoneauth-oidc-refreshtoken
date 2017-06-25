@@ -18,10 +18,9 @@
 
 import uuid
 from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
-from keystoneauth1.tests.unit import oidc_fixtures
 from keystoneauth1.tests.unit import utils
 
-from keystoneauth_oidc_refreshtoken import exceptions
+from keystoneauth_oidc_refreshtoken import oidc_fixtures
 from keystoneauth_oidc_refreshtoken import plugin as oidc
 
 
