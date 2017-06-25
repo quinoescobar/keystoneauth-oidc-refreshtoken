@@ -16,11 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uuid
+# import uuid
 from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
-from keystoneauth1.tests.unit import utils
+from keystoneauth1.tests.unit import oidc_fixtures
+# from keystoneauth1.tests.unit import utils
 
-from keystoneauth_oidc_refreshtoken.tests.unit import oidc_fixtures
+# from keystoneauth_oidc_refreshtoken.tests.unit import oidc_fixtures
 from keystoneauth_oidc_refreshtoken import plugin as oidc
 
 
@@ -31,7 +32,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
 
         self.GRANT_TYPE = 'refresh_token'
 
-        self.ACCESS_TOKEN_ENDPOINT = 'https://localhost:8020/oauth2/v4/token'
+        self.ACCESS_TOKEN_ENDPOINT = 'https://localhost:8020/oidc/token'
 
         self.plugin = oidc.OidcRefreshToken(
             self.AUTH_URL,
