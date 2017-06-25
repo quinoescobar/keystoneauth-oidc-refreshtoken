@@ -34,6 +34,7 @@ class OidcRefreshToken(oidc._OidcBase):
     def __init__(self, auth_url, identity_provider, protocol,
                  client_id, client_secret,
                  access_token_endpoint,
+                 access_token_type='access_token',
                  refresh_token=None, **kwargs):
         """The OpenID Refresh Token plugin, It expects the following.
 
@@ -71,6 +72,7 @@ class OidcRefreshToken(oidc._OidcBase):
             client_id=client_id,
             client_secret=client_secret,
             access_token_endpoint=access_token_endpoint,
+            access_token_type=access_token_type,
             **kwargs)
         self.refresh_token = refresh_token
 
