@@ -29,9 +29,9 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
     def setUp(self):
         super(OIDCRefreshTokenTests, self).setUp()
 
-        self.GRANT_TYPE = 'refresh_token'
+        self.GRANT_TYPE = 'password'
 
-        self.AUTHORIZATION_ENDPOINT = 'https://localhost:8020/oidc/authn'
+        # self.AUTHORIZATION_ENDPOINT = 'https://localhost:8020/oidc/authn'
 
         self.plugin = oidc.OidcRefreshToken(
             self.AUTH_URL,
@@ -40,4 +40,4 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             client_id=self.CLIENT_ID,
             client_secret=self.CLIENT_SECRET,
             access_token_endpoint=self.ACCESS_TOKEN_ENDPOINT,
-            project_name = self.PROJECT_NAME)
+            project_name=self.PROJECT_NAME)
