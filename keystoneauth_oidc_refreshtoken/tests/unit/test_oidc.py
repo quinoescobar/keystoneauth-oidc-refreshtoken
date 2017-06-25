@@ -20,6 +20,7 @@ import uuid
 from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
 from keystoneauth1.tests.unit import oidc_fixtures
 from keystoneauth1.tests.unit import utils
+import mock
 
 from keystoneauth_oidc_refreshtoken import exceptions
 from keystoneauth_oidc_refreshtoken import plugin as oidc
@@ -42,14 +43,3 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             client_secret = self.CLIENT_SECRET,
             access_token_endpoint = self.ACCESS_TOKEN_ENDPOINT,
             project_name = self.PROJECT_NAME)
-
-    def test_no_authorization_endpoint(self):
-        plugin = self.plugin.__class__(self.AUTH_URL,
-                                       self.IDENTITY_PROVIDER,
-                                       self.PROTOCOL,
-                                       client_id=self.CLIENT_ID,
-                                       client_secret=self.CLIENT_SECRET)
-
-        self.assertRaises(exceptions.OidcAuthorizationEndpointNotFound,
-                          plugin._get_authorization_endpoint,
-                          self.session)
