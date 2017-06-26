@@ -107,14 +107,12 @@ class OidcRefreshToken(oidc._OidcBase):
         :returns: a token data representation
         :rtype: :py:class:`keystoneauth1.access.AccessInfoV3`
         """
-
         discovery = self._get_discovery_document(session)
         grant_types = discovery.get("grant_types_supported")
         if (grant_types and
                 self.grant_type is not None and
                 self.grant_type not in grant_types):
             raise exceptions.OidcPluginNotSupported()
-
 
         payload = self.get_payload(session)
         access_token = self._get_access_token(session, payload)

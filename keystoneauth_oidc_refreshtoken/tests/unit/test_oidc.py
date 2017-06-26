@@ -32,8 +32,6 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
 
         self.GRANT_TYPE = 'refresh_token'
 
-        self.DISCOVERY_URL = 'https://localhost:8020/oidc/token'
-
         self.plugin = oidc.OidcRefreshToken(
             self.AUTH_URL,
             self.IDENTITY_PROVIDER,
@@ -42,18 +40,3 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             client_secret=self.CLIENT_SECRET,
             access_token_endpoint=self.ACCESS_TOKEN_ENDPOINT,
             project_name=self.PROJECT_NAME)
-
-    # def test_wrong_grant_type(self):
-    #     self.requests_mock.get(self.DISCOVERY_URL,
-    #                            json={"grant_types_supported": ["foo", "bar"]})
-    #
-    #     plugin = self.plugin.__class__(self.AUTH_URL,
-    #                                    self.IDENTITY_PROVIDER,
-    #                                    self.PROTOCOL,
-    #                                    client_id=self.CLIENT_ID,
-    #                                    client_secret=self.CLIENT_SECRET,
-    #                                    discovery_endpoint=self.DISCOVERY_URL)
-    #
-    #     self.assertRaises(exceptions.OidcPluginNotSupported,
-    #                       plugin.get_unscoped_auth_ref,
-    #                       self.session)
