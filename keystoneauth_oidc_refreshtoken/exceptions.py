@@ -21,3 +21,7 @@ from keystoneauth1.exceptions import auth_plugins
 
 class OidcRefreshTokenEndpointNotFound(auth_plugins.AuthPluginException):
     message = "OpenID Connect refresh token endpoint not provided."
+
+
+class OidcPluginNotSupported(auth_plugins.AuthPluginException):
+    message = "OpenID Connect grant type not supported by provider."

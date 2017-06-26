@@ -21,6 +21,8 @@ from keystoneauth1 import access
 from keystoneauth1.identity.v3 import oidc
 from positional import positional
 
+from keystoneauth_oidc_refreshtoken import exceptions
+
 
 _logger = utils.get_logger(__name__)
 
