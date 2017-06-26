@@ -32,7 +32,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
 
         self.GRANT_TYPE = 'refresh_token'
 
-        self.ACCESS_TOKEN_ENDPOINT = 'https://localhost:8020/oidc/token'
+        self.DISCOVERY_URL = 'https://localhost:8020/oidc/token'
 
         self.plugin = oidc.OidcRefreshToken(
             self.AUTH_URL,
@@ -40,6 +40,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             self.PROTOCOL,
             client_id=self.CLIENT_ID,
             client_secret=self.CLIENT_SECRET,
+            access_token_endpoint=self.ACCESS_TOKEN_ENDPOINT,
             project_name=self.PROJECT_NAME)
 
     # def test_wrong_grant_type(self):
