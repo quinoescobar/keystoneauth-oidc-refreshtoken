@@ -112,6 +112,7 @@ class OidcRefreshToken(oidc._OidcBase):
                 self.grant_type not in grant_types):
             raise exceptions.OidcPluginNotSupported()
 
+
         payload = self.get_payload(session)
         access_token = self._get_access_token(session, payload)
         response = self._get_keystone_token(session, access_token)
