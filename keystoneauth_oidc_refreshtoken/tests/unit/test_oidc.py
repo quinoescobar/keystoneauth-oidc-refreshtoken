@@ -75,3 +75,16 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
         headers = {'Authorization': 'Bearer ' + self.ACCESS_TOKEN}
         self.assertEqual(headers['Authorization'],
                          response.request.headers['Authorization'])
+
+    def test_end_to_end_workflow(self):
+        self.requests_mock.post(
+            self.ACCESS_TOKEN_ENDPOINT,
+            json=oidc_fixtures.ACCESS_TOKEN_VIA_REFRESH_TOKEN_RESP)
+
+        self.requests_mock.post(
+            self.FEDERATION_AUTH_URL,
+            json=oidc_fixtures.UNSCOPED_TOKEN,
+            headers={'X-Subject-Token': KEYSTONE_TOKEN_VALUE})
+
+        response = self.plugin.get_unscoped_auth_ref(self.session)
+        self.assertEqual(KEYSTONE_TOKEN_VALUE, response.auth_token)
