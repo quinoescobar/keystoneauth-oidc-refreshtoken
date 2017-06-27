@@ -17,14 +17,16 @@
 # limitations under the License.
 
 import uuid
+
 from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
 from keystoneauth1.tests.unit import utils
-# import mock
+
 from six.moves import urllib
 
 from keystoneauth_oidc_refreshtoken import plugin as oidc
 from keystoneauth_oidc_refreshtoken.tests.unit import oidc_fixtures
 
+KEYSTONE_TOKEN_VALUE = uuid.uuid4().hex
 
 class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
                             utils.TestCase):
@@ -57,3 +59,18 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
         self.assertEqual('POST', last_req.method)
         encoded_payload = urllib.parse.urlencode(payload)
         self.assertEqual(encoded_payload, last_req.body)
+
+    def test_second_call_to_protected_url(self):
+        self.requests_mock.post(
+            self.FEDETATION_AUTH_URL,
+            json=oidc_fixtures.UNSCOPED_TOKEN,
+            header={'X-Subject-Token' : KEYSTONE_TOKEN_VALUE})
+
+        response = self.plugin._get_keystone_token(self.session,
+                                                   self.ACCESS_TOKEN)
+
+        self.assertEqual(self.FEDERATION_AUTH_URL, response.request.url)
+        self.assertEqual('POST', response.request.method)
+        headers = {'Authorization': 'Bearer ' + self.ACCESS_TOKEN}
+        self.assertEqual(headers['Authorization'],
+                         response.request.headers['Authorization'])
