@@ -28,6 +28,7 @@ from keystoneauth_oidc_refreshtoken.tests.unit import oidc_fixtures
 
 KEYSTONE_TOKEN_VALUE = uuid.uuid4().hex
 
+
 class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
                             utils.TestCase):
     def setUp(self):
@@ -64,7 +65,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
         self.requests_mock.post(
             self.FEDERATION_AUTH_URL,
             json=oidc_fixtures.UNSCOPED_TOKEN,
-            header={'X-Subject-Token': KEYSTONE_TOKEN_VALUE})
+            headers={'X-Subject-Token': KEYSTONE_TOKEN_VALUE})
 
         response = self.plugin._get_keystone_token(self.session,
                                                    self.ACCESS_TOKEN)
