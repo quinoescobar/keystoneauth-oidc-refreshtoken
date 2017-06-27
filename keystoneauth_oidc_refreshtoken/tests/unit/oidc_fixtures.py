@@ -50,17 +50,12 @@ ACCESS_TOKEN_VIA_AUTH_GRANT_RESP = {
     "id_token": "eyJhbGciOiJSUzI1Ni8hOYHuZT8dt_yynmJVhcU"
 }
 
-ACCESS_TOKEN_VIA_REFRESH_TOKEN = {
+ACCESS_TOKEN_VIA_REFRESH_TOKEN_RESP = {
     "access_token": "z5H1ITZLlJVDHQXqJun",
     "token_type": "Bearer",
     "expires_in": 3600
 }
 
-# {
-#   "access_token": "ya29.GlsxBLfEdY6Ic0xh3_vmiOow_CvrjTGL_5HIUaAipOhxj2lFf14SA6BvA0xRm2uFtBWw6OYo3qgGiW-AEH2j-lJ-WAflcJlMG0fORUAv1xAZDZpP2Lq3yCzFl51Y",
-#   "token_type": "Bearer",
-#   "expires_in": 3600
-# }
 DISCOVERY_DOCUMENT = {
     "authorization_endpoint": "https://localhost:8020/oidc/authorize",
     "claims_supported": [

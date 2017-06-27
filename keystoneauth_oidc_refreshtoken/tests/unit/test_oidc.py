@@ -16,11 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# import uuid
+import uuid
 from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
 from keystoneauth1.tests.unit import oidc_fixtures
 from keystoneauth1.tests.unit import utils
-
+import mock
 # from keystoneauth_oidc_refreshtoken.tests.unit import oidc_fixtures
 from keystoneauth_oidc_refreshtoken import plugin as oidc
 
@@ -40,3 +40,17 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             client_secret=self.CLIENT_SECRET,
             access_token_endpoint=self.ACCESS_TOKEN_ENDPOINT,
             project_name=self.PROJECT_NAME)
+
+    def test_initial_call_to_get_access_token(self):
+        self.requests_mock.post(
+            self.ACCESS_TOKEN_ENDPOINT,
+            json=oidc_fixtures.ACCESS_TOKEN_VIA_REFRESH_TOKEN_RESP)
+        payload = {'refresh_token': self.REFRESH_TOKEN,
+                   'grant_type': self.GRANT_TYPE}
+        self.plugin._get_access_token(self.session, payload)
+
+        last_req = self.requests_mock_last_request
+        self.assertEqual(self.ACCESS_TOKEN_ENDPOINT, last_req.url)
+        self.assertEqual('POST', last_req.method)
+        encoded_payload = urllib.parse.urlencode(payload)
+        self.assertEqual(encoded_payload, last_req.body)
