@@ -52,7 +52,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
                    'grant_type': self.GRANT_TYPE}
         self.plugin._get_access_token(self.session, payload)
 
-        last_req = self.requests_mock_last_request
+        last_req = self.requests_mock.last_request
         self.assertEqual(self.ACCESS_TOKEN_ENDPOINT, last_req.url)
         self.assertEqual('POST', last_req.method)
         encoded_payload = urllib.parse.urlencode(payload)
