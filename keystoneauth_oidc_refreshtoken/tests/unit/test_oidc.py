@@ -62,7 +62,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
 
     def test_second_call_to_protected_url(self):
         self.requests_mock.post(
-            self.FEDETATION_AUTH_URL,
+            self.FEDERATION_AUTH_URL,
             json=oidc_fixtures.UNSCOPED_TOKEN,
             header={'X-Subject-Token' : KEYSTONE_TOKEN_VALUE})
 
