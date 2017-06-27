@@ -19,7 +19,8 @@
 import uuid
 from keystoneauth1.tests.unit.identity import test_identity_v3_oidc
 from keystoneauth1.tests.unit import utils
-import mock
+# import mock
+from six.moves import urllib
 
 from keystoneauth_oidc_refreshtoken import plugin as oidc
 from keystoneauth_oidc_refreshtoken.tests.unit import oidc_fixtures
@@ -31,6 +32,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
         super(OIDCRefreshTokenTests, self).setUp()
 
         self.GRANT_TYPE = 'refresh_token'
+        self.REFRESH_TOKEN = uuid.uuid4().hex
 
         self.plugin = oidc.OidcRefreshToken(
             self.AUTH_URL,
@@ -39,7 +41,8 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
             client_id=self.CLIENT_ID,
             client_secret=self.CLIENT_SECRET,
             access_token_endpoint=self.ACCESS_TOKEN_ENDPOINT,
-            project_name=self.PROJECT_NAME)
+            project_name=self.PROJECT_NAME,
+            refresh_token=self.REFRESH_TOKEN)
 
     def test_initial_call_to_get_access_token(self):
         self.requests_mock.post(
