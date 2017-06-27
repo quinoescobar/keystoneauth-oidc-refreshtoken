@@ -64,7 +64,7 @@ class OIDCRefreshTokenTests(test_identity_v3_oidc.BaseOIDCTests,
         self.requests_mock.post(
             self.FEDERATION_AUTH_URL,
             json=oidc_fixtures.UNSCOPED_TOKEN,
-            header={'X-Subject-Token' : KEYSTONE_TOKEN_VALUE})
+            header={'X-Subject-Token': KEYSTONE_TOKEN_VALUE})
 
         response = self.plugin._get_keystone_token(self.session,
                                                    self.ACCESS_TOKEN)
