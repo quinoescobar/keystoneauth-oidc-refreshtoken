@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright 2017 JOSÉ JOAQUÍN ESCOBAR GÓMEZ
+# Copyright 2017 JOSE JOAQUIN ESCOBAR GOMEZ
 # File: setup.py
 # Description:
 #

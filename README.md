@@ -1,44 +1,49 @@
 
-# OpenID Connect Access Token Procurement Through Refresh Token for OpenStack client
+# OpenID Connect Access Token Procurement Through Refresh Token for OpenStack Clients
 
 [![Build Status](https://travis-ci.org/quinoescobar/keystoneauth-oidc-refreshtoken.svg?branch=master)](https://travis-ci.org/quinoescobar/keystoneauth-oidc-refreshtoken)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://raw.githubusercontent.com/quinoescobar/keystoneauth-oidc-refreshtoken/master/LICENSE)
 
 Description
 ===========
-Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text
-Some textSome textSome textSome text.
+This is a plugin for the OpenStack Clients,
+[keystoneauth1](https://github.openstack/keystoneauth) library,
+which provides client support Refresh Token for the procurement of the Access Token.
 
-
-
-
-Paragraphs are separated by blank lines. *Italics*, **bold**,
-and ``monospace`` look like this.
-
-
+---------------
 ## Installation
 
 
-Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text
-Some textSome textSome textSome text.
+#### PIP
+* Install it via  pip:
 
-* Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text Some textSome textSome textSome text.
+      pip install keystoneauth-oidc-refreshtoken
 
+#### Download
+* Clone the repository and install it:
 
-* Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text Some textSome textSome textSome text.
+        git clone https://github.com/quinoescobar/keystoneauth-oidc-refreshtoken.git
+        cd keystoneauth-oidc-refreshtoken
+        pip install .
 
+--------
 ## Usage
 
-
 ### CLI
----
 
-Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text
-Some textSome textSome textSome text.
+You must specify the auth type `v3oidcrefreshtoken` in the `--os-auth-type` option and provide a valid Refresh Token with `--os-refresh-token` :
 
-1. Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text
-Some textSome textSome textSome text.
 
-2. Some textSome textSome textSome textSome textSome textSome textSome textSome textSome text
-Some textSome textSome textSome text.
 
-`keystoneauth-oidc-refreshtoken <https://github.com/quinoescobar/keystoneauth-oidc-refreshtoken>`_.
+        openstack --os-auth-type v3oidcrefreshtoken \
+        --os-auth-url https://keystone.example.org/v4/token \
+        --os-refresh-token <refresh-token> \
+        --os-client-id <client-id> \
+        --os-client-secret <client-secret> \
+        --os-protocol <protocol> \
+        --os-identity-provider <identity-provider> \
+        --os-access-token-endpoint <access-token-endpoint> \
+        token issue
+
+--------
+[keystoneauth-oidc-refreshtoken](https://github.com/quinoescobar/keystoneauth-oidc-refreshtoken)

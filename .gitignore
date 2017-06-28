@@ -1,0 +1,12 @@
+.testrepository/
+.tox
+*.pyc
+*.egg-info/
+build/
+dist/
+*.log
+.coverage
+coverage.xml
+cover/*
+covhtml
+*.eggs/
