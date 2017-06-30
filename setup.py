@@ -16,14 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import setup
+import setuptools
 
 try:
     import multiprocessing  # noqa
 except ImportError:
     pass
 
-setup(
-    setup_requires=['pbr'],
-    pbr=True,
+setuptools.setup(
+    setup_requires=['pbr>=1.8'],
+    pbr=True
 )

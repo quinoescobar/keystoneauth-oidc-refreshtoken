@@ -3,6 +3,8 @@
 *.pyc
 *.egg-info/
 build/
+AUTHORS
+ChangeLog
 dist/
 *.log
 .coverage
